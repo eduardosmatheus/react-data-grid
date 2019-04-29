@@ -297,12 +297,13 @@ class Cell extends React.PureComponent {
   renderCellContent = (props) => {
     let CellContent;
     const Formatter = this.getFormatter();
+    const className = `cell-${props.column.key}`;
     if (React.isValidElement(Formatter)) {
-      CellContent = React.cloneElement(Formatter, { ...props, dependentValues: this.getFormatterDependencies(), row: this.getRowData() });
+      CellContent = React.cloneElement(Formatter, { ...props, dependentValues: this.getFormatterDependencies(), row: this.getRowData(), className });
     } else if (isFunction(Formatter)) {
-      CellContent = <Formatter value={this.props.value} dependentValues={this.getFormatterDependencies()} isScrolling={this.props.isScrolling} row={this.getRowData()}/>;
+      CellContent = <Formatter value={this.props.value} dependentValues={this.getFormatterDependencies()} isScrolling={this.props.isScrolling} row={this.getRowData()} className={className} />;
     } else {
-      CellContent = <SimpleCellFormatter value={this.props.value} />;
+      CellContent = <SimpleCellFormatter value={this.props.value} className={className} />;
     }
     const isExpandCell = this.props.expandableOptions ? this.props.expandableOptions.field === this.props.column.key : false;
     const treeDepth = this.props.expandableOptions ? this.props.expandableOptions.treeDepth : 0;

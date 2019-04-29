@@ -57,6 +57,24 @@ class HeaderCell extends React.Component {
     this.setState({ resizing: false });
   };
 
+  onClick = () => {
+    const { column, onResizeEnd } = this.props;
+    const cellName = `cell-${column.key}`;
+    const cells = document.getElementsByClassName(cellName);
+    if (!cells) return;
+    let maxWidth = null;
+    Array.from(cells).forEach((cell) => {
+      if (cell) {
+        const width = cell.offsetWidth;
+        if (maxWidth < width) maxWidth = width;
+      }
+    });
+    if (maxWidth && onResizeEnd) {
+      const paddingWidth = 16;
+      onResizeEnd(column, maxWidth + paddingWidth);
+    }
+  }
+
   getWidthFromMouseEvent = (e) => {
     const right = e.pageX || (e.touches && e.touches[0] && e.touches[0].pageX) || (e.changedTouches && e.changedTouches[e.changedTouches.length - 1].pageX);
     const left = ReactDOM.findDOMNode(this).getBoundingClientRect().left;
@@ -112,6 +130,7 @@ class HeaderCell extends React.Component {
         onDrag={this.onDrag}
         onDragStart={this.onDragStart}
         onDragEnd={this.onDragEnd}
+        onClick={this.onClick}
       />
     );
     const className = classNames({
