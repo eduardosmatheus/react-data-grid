@@ -96,5 +96,8 @@
   "bugs": {
     "url": "https://github.com/adazzle/react-data-grid/issues"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "homepage": "https://github.com/adazzle/react-data-grid"
 }
