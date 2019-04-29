@@ -13,7 +13,7 @@
     "data-grid",
     "core"
   ],
-  "repository": "eduardosmatheus/react-data-grid",
+  "repository": "@eduardosmatheus/react-data-grid",
   "author": "Adazzle",
   "license": "MIT",
   "peerDependencies": {
@@ -27,5 +27,8 @@
     "object-assign": "^4.1.1",
     "react-is-deprecated": "^0.1.2",
     "shallowequal": "^1.1.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
