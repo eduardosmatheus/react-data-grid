@@ -35,8 +35,6 @@ class HeaderRow extends React.Component {
     style: PropTypes.shape(HeaderRowStyle),
     sortColumn: PropTypes.string,
     sortDirection: PropTypes.oneOf(Object.keys(SortableHeaderCell.DEFINE_SORT)),
-    cellRenderer: PropTypes.func,
-    headerCellRenderer: PropTypes.func,
     filterable: PropTypes.bool,
     onFilterChange: PropTypes.func,
     resizing: PropTypes.object,
