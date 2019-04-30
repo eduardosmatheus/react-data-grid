@@ -7,7 +7,7 @@ import React from 'react';
  */
 export default function withContentSize(Component) {
   return function ComponentWithMaxContent(props) {
-    const { style, rest } = props;
+    const { style, ...rest } = props;
     return (
       <Component {...rest} style={{ ...style, width: 'max-content' }} />
     );
