@@ -6,10 +6,12 @@ import React from 'react';
  * @param {*} Component
  */
 export default function withContentSize(Component) {
-  return function ComponentWithMaxContent(props) {
-    const { style, ...rest } = props;
+  return function ComponentWithMaxContent({ style, ...rest }) {
     return (
-      <Component {...rest} style={{ ...style, width: 'max-content' }} />
+      <Component
+        style={{ ...style, width: 'max-content' }}
+        {...rest}
+      />
     );
   };
 }
