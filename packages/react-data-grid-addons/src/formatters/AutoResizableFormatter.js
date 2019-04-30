@@ -1,4 +1,4 @@
 import withContentSize from './injectors/withContentSize';
-import SimpleCellFormatter from './SimpleCellFormatter';
+import { SimpleCellFormatter } from 'react-data-grid';
 
 export default withContentSize(SimpleCellFormatter);
