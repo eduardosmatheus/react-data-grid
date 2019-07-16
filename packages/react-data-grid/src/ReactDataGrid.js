@@ -689,6 +689,9 @@ class ReactDataGrid extends React.Component {
   };
 
   getHeaderRows = () => {
+    console.log('recebi via props', this.props.getHeaderRows);
+    if (this.props.getHeaderRows) return this.props.getHeaderRows();
+
     const rows = [{ height: this.props.headerRowHeight || this.props.rowHeight, rowType: HeaderRowType.HEADER }];
     if (this.state.canFilter === true) {
       rows.push({
