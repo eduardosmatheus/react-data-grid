@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Header from './Header';
+import Summary from './Summary';
 import Viewport from './Viewport';
 import cellMetaDataShape from 'common/prop-shapes/CellMetaDataShape';
 import { isFrozen } from './ColumnUtils';
@@ -72,12 +73,14 @@ class Grid extends React.Component {
     onScroll: PropTypes.func,
     scrollLeft: PropTypes.number,
     RowsContainer: PropTypes.node,
-    editorPortalTarget: PropTypes.instanceOf(Element).isRequired
+    editorPortalTarget: PropTypes.instanceOf(Element).isRequired,
+    enableSummary: PropTypes.bool,
   };
 
   static defaultProps = {
     rowHeight: 35,
-    minHeight: 350
+    minHeight: 350,
+    enableSummary: false
   };
 
   _scrollLeft = undefined;
@@ -216,6 +219,20 @@ class Grid extends React.Component {
             <div ref={this.setEmptyViewRef} className="react-grid-Empty">
                 <EmptyRowsView />
             </div>
+        }
+        {this.props.enableSummary &&
+          <Summary
+            ref={(node) => { this.summary = node; } }
+            columnMetrics={this.props.columnMetrics}
+            onColumnResize={this.props.onColumnResize}
+            height={this.props.rowHeight}
+            totalWidth={this.props.totalWidth}
+            cellMetaData={this.props.cellMetaData}
+            rowGetter={this.props.rowGetter}
+            rowsCount={this.props.rowsCount}
+            onScroll={this.onScroll}
+            dataChanged={this.props.dataChanged}
+          />
         }
       </div>
     );
