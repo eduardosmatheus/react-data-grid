@@ -225,7 +225,7 @@ class Grid extends React.Component {
             ref={(node) => { this.summary = node; } }
             columnMetrics={this.props.columnMetrics}
             onColumnResize={this.props.onColumnResize}
-            height={this.props.rowHeight}
+            height={this.props.headerRowHeight}
             totalWidth={this.props.totalWidth}
             cellMetaData={this.props.cellMetaData}
             rowGetter={this.props.rowGetter}
