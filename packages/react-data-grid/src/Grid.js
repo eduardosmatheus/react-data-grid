@@ -97,6 +97,9 @@ class Grid extends React.Component {
   _onScroll = () => {
     if (this._scrollLeft !== undefined) {
       this.header.setScrollLeft(this._scrollLeft);
+      if (this.props.enableSummary) {
+        this.summary.setScrollLeft(this._scrollLeft);
+      }
       if (this.viewport) {
         this.viewport.setScrollLeft(this._scrollLeft);
       }
