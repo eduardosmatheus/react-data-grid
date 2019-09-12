@@ -246,6 +246,8 @@ class Viewport extends React.Component {
   };
 
   render() {
+    const { enableSummary, rowOffsetHeight } = this.props;
+
     const style = {
       padding: 0,
       bottom: 0,
@@ -253,7 +255,7 @@ class Viewport extends React.Component {
       right: 0,
       overflow: 'hidden',
       position: 'absolute',
-      top: this.props.rowOffsetHeight
+      top: enableSummary ? rowOffsetHeight * 2 : rowOffsetHeight
     };
     return (
       <div
